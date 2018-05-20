@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html ng-app="angularApp">
 <head>
     <meta charset="utf-8" />
@@ -16,4 +16,162 @@
     <script src="app/app.module.js"></script>
     <script src="app/main.js"></script>
 </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Twitch.Tv Status</title>	
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="Styles/style.css">
+
+	
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- <script src="Scripts/angular.min.js"></script> -->
+	<script src="app/main.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="Twitch.Tv.App">
+
+
+	<!-- TITLE -->
+	<div class="title animated slideInDown">
+		<h1><i class="fa fa-twitch animated pulse infinite" aria-hidden="true"></i>  twitch.tv status app</h1>
+	</div>
+
+
+	<!-- NAVIGATION -->
+	<div class="container navigation animated slideInDown">
+		
+
+		<!-- MAIN NAVIGATION -->			
+		<div class="row nav-main">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<div class="active nav-button pop-btn">popular</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				<div class="nav-button fav-btn">favorites</div>
+			</div>
+		</div>
+
+
+		<!-- SUB NAVIGATION -->
+		<div class="row sub-nav">
+			<div class="fav-status animated bounceInUp hidden" ng-init="selected = 'all'">
+
+				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="all">
+					<div class='active nav-button all-btn' ng-click="status = {}">all</div>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="online">
+					<div class='nav-button online-btn' ng-click="status = {status: 'online'}" ng-class=""><i class="fa fa-circle animated zoomInDown"></i>online</div>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="offline">
+					<div class='nav-button offline-btn' ng-click="status = {status: 'offline'}"><i class="fa fa-circle-o animated zoomInDown"></i>offline</div>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+	<!-- FAVORITE STREAMERS -->
+	<div class="container" ng-controller="favController">
+		<div ng-repeat="attr in favorites | orderBy: 'name' | filter: status">
+			<a href="{{ attr.url }}" target="_blank">
+				<div class="row stream-card fav-card animated slideInUp hidden">
+					<div class="col-sm-2 col-md-2">
+						<!-- <img class="animated zoomIn" src="{{ attr.logo || 'http://dummyimage.com/140x140/eeeeee/999999.png&text=no+logo' }}"> -->
+						<img class="animated zoomIn" src="{{ attr.logo }}">
+					</div>
+					<div class="col-sm-10 col-md-10">
+						<div class="row">
+							<div class="col-sm-12">
+								<span class="channel-desc hidden-xs" ng-class="{'offline':attr.offline}"> {{ attr.description || attr.status }} </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-9">
+								<div class="name-wrapper">
+									<i ng-class="{'fa fa-circle animated zoomInLeft':attr.online,'fa fa-circle-o animated zoomInLeft':attr.offline,'fa fa-dot-circle-o animated zoomInDown':attr.inactive}"></i>
+									<h2>{{ attr.display_name }}</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-1"></div>
+							<div class="col-xs-7 col-sm-8">
+								<p class="streaming" ng-class="{'offline':attr.offline, 'inactive':attr.inactive}">streaming: {{ attr.game }}</p>
+							</div>
+							<div class="col-xs-5 col-sm-3">
+								<p class="viewers" ng-class="{'offline':attr.offline,'inactive':attr.inactive}">viewers : {{ attr.viewers }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+
+	<!--POPULAR STREAMERS-->
+	<div class="container" ng-controller="popController" ng-cloak>
+		<div ng-repeat="attr in data">
+			<a href="{{ attr.channel.url }}" target="_blank">
+				<div class="row stream-card pop-card animated slideInUp">
+					<div class="col-sm-2 col-md-2">
+						<!-- <img class="animated zoomIn" src="{{ attr.channel.logo || 'http://dummyimage.com/140x140/eeeeee/999999.png&text=no+logo' }}"> -->
+						<img class="animated zoomIn" src="{{ attr.channel.logo }}">
+					</div>
+					<div class="col-sm-10 col-md-10">
+						<div class="row">
+							<div class="col-sm-12">
+								<span class="channel-desc hidden-xs" ng-class="{'offline':attr.offline}"> {{ attr.channel.status || attr.status }} </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-9">
+								<div class="name-wrapper">
+									<i class="fa fa-circle animated zoomInLeft"></i>
+									<h2>{{ attr.channel.display_name }}</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-1"></div>
+							<div class="col-xs-7 col-sm-8">
+								<p class="streaming" ng-class="{'offline':attr.offline, 'inactive':attr.inactive}">streaming: {{ attr.game }}</p>
+							</div>
+							<div class="col-xs-5 col-sm-3">
+								<p class="viewers" ng-class="{'offline':attr.offline,'inactive':attr.inactive}">viewers : {{ attr.viewers }}</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</a>
+		</div>
+	</div>
+
+<!-- 	<script src="Scripts/angular.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script src="app/main.js"></script> -->
+
+</body>
+
+<footer>
+	<h5>Designed and coded by Maigan Pierce</a><br><br>All rights reserved &#9426 2018</h5>
+</footer>
 </html>
+
+

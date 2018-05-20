@@ -1,0 +1,197 @@
+$color-main: rgba(175,192,183,.6);
+$color-main-hover: rgba(175,192,183,.8);
+$color-text: #fff;
+$color-online: rgba(172,255,211,.4);
+$color-offline: rgba(255,108,133,.4);
+$color-invalid: rgba(170,170,170,.6);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald);
+
+@mixin status($color) {
+  z-index: -1;
+  position: absolute;
+  top: -4px;
+  left: 30px;
+  font-size: 5em;
+  color: $color;
+}
+@mixin nav-hover {
+  background-color: $color-text;
+  color: $color-invalid;
+  cursor: pointer;
+}
+@mixin ani-dd($length, $del) {
+  animation-duration: $length;
+  -webkit-animation-duration: $length;
+  -moz-animation-duration: $length;
+  -o-animation-duration: $length;
+  -ms-animation-duration: $length;
+  animation-delay: $del;
+  -webkit-animation-delay: $del;
+  -moz-animation-delay: $del;
+  -o-animation-delay: $del;
+  -ms-animation-delay: $del;
+}
+@mixin transitions($element, $duration) {
+  transition: $element $duration ease-in-out;
+  -webkit-transition: $element $duration ease-in-out;
+  -moz-transition: $element $duration ease-in-out;
+  -o-transition: $element $duration ease-in-out;
+  -ms-transition: $element $duration ease-in-out;
+}
+  
+body {
+  background: url("http://www.zingerbug.com/Backgrounds/background_images/dark_purple_mini_bricks_seamless_pattern.gif") fixed;
+  background-size: contain;
+  color: $color-text;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  .title {
+    h1 {
+      font-size: 6em;
+      padding: 5% 0 5% 0;
+      text-shadow: 1px 1px rgba(200,200,200,0.5);
+    }
+  }
+  .container {
+    max-width: 660px;
+  }
+  .fa-twitch {
+    @include ani-dd(3s, 2s);
+  }
+  a {
+    color: $color-text;
+    &:hover {
+      color: $color-text;
+    }
+    &:focus {
+      color: $color-text;
+    }
+  }
+}
+
+.navigation {
+  .nav-button {
+    background-color: $color-invalid;
+    padding: 0 0 0 0;
+    &:hover {
+      @include nav-hover;
+      @include transitions(background-color, 0.3s);
+    }
+  }
+  .active {
+    background-color: $color-main;
+    @include transitions(background-color, 0.8s);
+  }
+  .nav-main {
+    font-size: 32px;
+    :first-child {
+      padding-right: 0;
+      height: 54px;
+    }
+    :nth-child(2) {
+      padding-left: 0;
+      height: 54px;
+    }
+  }
+  .sub-nav {
+    font-size: 1.2em;
+    padding: 0 0px 0 0px;
+    #all {
+      padding-left: 15px;
+    }
+    #offline {
+      padding-right: 15px;
+    }
+    .fa-circle {
+      color: $color-online;
+      margin: 0 4px 0 0;
+    }
+    .fa-circle-o {
+      color: $color-offline;
+      margin: 0 4px 0 0;
+    }
+  }
+}
+
+.stream-card {
+  background-color: $color-main;
+  border: 3px solid transparent;
+  margin: 0 0 0.5% 0;
+  @include ani-dd(2s, 0s);
+  &:hover {
+    background-color: $color-main-hover;
+    border: 3px solid $color-text;
+    @include transitions(border, 0.4s);
+    @include transitions(background-color, 0.5s);
+  }
+  img {
+    max-height: 100%;
+    max-width: 120px;
+    margin: 0 0 0 -15px;
+  }
+  .channel-desc{
+    padding: 0 0 0 5px;
+    max-width: 200px;
+  }
+  .name-wrapper {
+    width: 200px;
+    margin: 0 0 0 0;
+    h2 {
+      z-index: 1;
+      font-size: 3.25em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: initial;
+      margin: 15px 0 0 40px;
+      position: relative;
+    }
+    //STATUS 'LEDs'
+    .fa-circle {
+      @include status($color-online);
+      @include ani-dd(2.5s, 0s);
+    }
+    .fa-circle-o {
+      @include status($color-offline);
+      @include ani-dd(2.5s, 0s);
+    }
+    .fa-dot-circle-o {
+      @include status($color-invalid);
+      @include ani-dd(2.5s, 0s);
+    }
+  }
+  .offline {
+    color: transparent;
+  }
+  .inactive {
+    display: none;
+  }
+  .streaming {
+    text-align: left;
+    margin: 8px 0 0 0;
+  }
+  .viewers {
+    margin: 8px 0 0 0;
+  }
+}
+
+footer {
+  margin: 35% 0 10% 0;
+  a {
+    color: $color-invalid;
+    &:hover {
+      color: $color-main-hover;
+      text-decoration: none;
+      font-size: 1.6em;
+      @include transitions(font-size, 0.7s);
+    }
+  }
+  h5 {
+    font-size: 1.5em;
+  }
+  text-shadow: 2px 2px rgba(200,200,200,0.7);
+}
+
+@media (max-width: 768px) {
+  body > .container { overflow: hidden; }
+  body > .container > * { overflow: visible; } 
+}

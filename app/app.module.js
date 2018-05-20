@@ -1,5 +1,5 @@
-﻿(function () {
-    'use strict';
+﻿// (function () {
+// 	'use strict';
 
-    angular.module('angularApp', []);
-})();
+// 	angular.module('Twitch.Tv.App', []);
+// })();
