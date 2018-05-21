@@ -56,66 +56,36 @@ $('.all-btn, .online-btn, .offline-btn').click(function() {
     //Favorite streamers
     app.controller('favController', function($scope, $http) {
     	var id = "cdm27hi8sitzx09891yy1gxhi147wq";
-    	var favStreamers = ["YoDa", "freecodecamp", "storbeck", "terakilobyte", "habathcx","RobotCaleb","thomasballinger","noobs2ninjas","beohoff","test_channel","cretetion","sheevergaming","OgamingSC2","ESL_SC2"];
+    	var favStreamers = ["FreeCodeCamp", "Giantwaffle", "Boogie2988", "JennaJulien", "Food", "Painting"];
 
-    	$scope.favorites = [];
+    	$scope.favorites = [];    
 
-    	angular.forEach(favStreamers, function(streamer){
-    		$http.get("https://api.twitch.tv/kraken/streams/" + streamer + "?client_id=" + id)
-    		.then(function successfulCallback(re_channel){
 
-    			$http.get("https://api.twitch.tv/kraken/channels/" + streamer + "?client_id=" + id)
-    			.then(function successfulCallback(favoriteChannels){
-    				if (re_channel.stream !== undefined && re_channel.stream !== null) {
-    					favoriteChannels.online = true;
-    					favoriteChannels.status = 'online';
-    					favoriteChannels.description = re_channel.stream.channel.status;
-    					favoriteChannels.viewers = re_channel.stream.viewers;
-    					$scope.favorites.push(favoriteChannels); 
-    				} else {
-    					favoriteChannels.offline = true;
-    					favoriteChannels.status = 'offline';
-    					$scope.favorites.push(favoriteChannels);
-    				}
-    			}, function errorCallback(response){
-    				$scope.favorites.push({
-    					inactive: true,
-    					status: 'inactive',
-    					display_name: streamer
-    				});
-    			});
-
-    		});
-    	});       
-
-    	// angular.forEach(favStreamers, function(streamer) {
-    	// 	$http.get("https://api.twitch.tv/kraken/streams/" + streamer + "?client_id=i7mj8onuhth01n677wrhib5oj794xn")
-    	// 	.then(function successfulCallback(function(re_channel) {
-
-    	// 		$http.get("https://api.twitch.tv/kraken/channels/" + streamer + "?client_id=i7mj8onuhth01n677wrhib5oj794xn")
-    	// 		.then( function successfulCallback(function(favoriteChannels) {                           
-    	// 			if (re_channel.stream !== null) {
-    	// 				favoriteChannels.online = true;
-    	// 				favoriteChannels.status = 'online';
-    	// 				favoriteChannels.description = re_channel.stream.channel.status;
-    	// 				favoriteChannels.viewers = re_channel.stream.viewers;
-    	// 				$scope.favorites.push(favoriteChannels); 
-    	// 			} else {
-    	// 				favoriteChannels.offline = true;
-    	// 				favoriteChannels.status = 'offline';
-    	// 				$scope.favorites.push(favoriteChannels);
-    	// 			}
-    	// 		});)
-
-    	// 	}, function errorCallback(function() {
-    	// 		$scope.favorites.push({
-    	// 			inactive: true,
-    	// 			status: 'inactive',
-    	// 			display_name: streamer
-    	// 		});
-    	// 	});
-    	// });
-    	// });
+        angular.forEach(favStreamers, function(streamer) {
+            $http.get("https://api.twitch.tv/kraken/streams/" + streamer + "?client_id=i7mj8onuhth01n677wrhib5oj794xn")
+            .success(function(re_channel) {
+                $http.get("https://api.twitch.tv/kraken/channels/" + streamer + "?client_id=i7mj8onuhth01n677wrhib5oj794xn")
+                .success(function(favoriteChannels) {                           
+                    if (re_channel.stream !== null) {
+                        favoriteChannels.online = true;
+                        favoriteChannels.status = 'online';
+                        favoriteChannels.description = re_channel.stream.channel.status;
+                        favoriteChannels.viewers = re_channel.stream.viewers;
+                        $scope.favorites.push(favoriteChannels); 
+                    } else {
+                      favoriteChannels.offline = true;
+                      favoriteChannels.status = 'offline';
+                      $scope.favorites.push(favoriteChannels);
+                  }});})
+            
+            .error(function() {
+                $scope.favorites.push({
+                    inactive: true,
+                    status: 'inactive',
+                    display_name: streamer
+                });
+            });
+        });
     });
 
     //Popular Streamers
