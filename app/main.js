@@ -1,18 +1,4 @@
-﻿// (function () {
-//     'use strict';
-
-//     angular.module('Twitch.Tv.App').controller('Main', main);
-
-//     function main() {
-//         var vm = this;
-//         vm.food = 'pizza';
-// 	vm.side = 'cheese';
-//     }
-// })();
-
-
-
-// General / onload functions
+﻿// General / onload functions
 $(document).ready(function(){
 
 //NAV functions and animations
@@ -92,8 +78,6 @@ $('.all-btn, .online-btn, .offline-btn').click(function() {
     app.controller('popController', function($scope, $http) {
     	$http.get("https://api.twitch.tv/kraken/streams" + "?client_id=cdm27hi8sitzx09891yy1gxhi147wq")
     	.then(function successfulCallback(response){
-    		$scope.data = response.data.streams;
+    		$scope.data = response.data.streams.slice(1,7);
     	});
-
-    	// .then(function successfulCallback(function(popularChannels){} {$scope.data = popularChannels.streams}); 
     });

@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald);
+
+
 body {
   background: url("http://www.zingerbug.com/Backgrounds/background_images/dark_purple_mini_bricks_seamless_pattern.gif") fixed;
   background-size: contain;
@@ -6,83 +8,69 @@ body {
   font-family: 'Oswald', sans-serif;
   text-align: center;
 }
-body .title h1 {
-  font-size: 6em;
-  padding: 5% 0 5% 0;
-  text-shadow: 1px 1px rgba(200, 200, 200, 0.5);
+
+
+h1 {
+  padding: 2% 0 2% 0;
 }
+
+
 body .container {
-  max-width: 660px;
+  max-width: 60%;
 }
-body .fa-twitch {
-  animation-duration: 3s;
-  -webkit-animation-duration: 3s;
-  -moz-animation-duration: 3s;
-  -o-animation-duration: 3s;
-  -ms-animation-duration: 3s;
-  animation-delay: 2s;
-  -webkit-animation-delay: 2s;
-  -moz-animation-delay: 2s;
-  -o-animation-delay: 2s;
-  -ms-animation-delay: 2s;
-}
-body a {
-  color: #fff;
-}
-body a:hover {
-  color: #fff;
-}
-body a:focus {
+
+
+a {
   color: #fff;
 }
 
+
 .navigation .nav-button {
   background-color: rgba(170, 170, 170, 0.6);
-  padding: 0 0 0 0;
 }
+
+
 .navigation .nav-button:hover {
   background-color: #fff;
   color: rgba(170, 170, 170, 0.6);
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  -moz-transition: background-color 0.3s ease-in-out;
-  -o-transition: background-color 0.3s ease-in-out;
-  -ms-transition: background-color 0.3s ease-in-out;
 }
+
+
 .navigation .active {
   background-color: rgba(175, 192, 183, 0.6);
   transition: background-color 0.8s ease-in-out;
-  -webkit-transition: background-color 0.8s ease-in-out;
-  -moz-transition: background-color 0.8s ease-in-out;
-  -o-transition: background-color 0.8s ease-in-out;
-  -ms-transition: background-color 0.8s ease-in-out;
 }
+
+
 .navigation .nav-main {
-  font-size: 32px;
+  font-size: 28px;
 }
-.navigation .nav-main :first-child {
-  padding-right: 0;
-  height: 54px;
-}
-.navigation .nav-main :nth-child(2) {
-  padding-left: 0;
-  height: 54px;
-}
+
+
 .navigation .sub-nav {
-  font-size: 1.2em;
+  font-size: 22px;
   padding: 0 0px 0 0px;
 }
+
+
 .navigation .sub-nav #all {
   padding-left: 15px;
 }
+
+
 .navigation .sub-nav #offline {
   padding-right: 15px;
 }
+
+
 .navigation .sub-nav .fa-circle {
   color: rgba(172, 255, 211, 0.4);
   margin: 0 4px 0 0;
 }
+
+
 .navigation .sub-nav .fa-circle-o {
   color: rgba(255, 108, 133, 0.4);
   margin: 0 4px 0 0;
@@ -92,44 +80,35 @@ body a:focus {
   background-color: rgba(175, 192, 183, 0.6);
   border: 3px solid transparent;
   margin: 0 0 0.5% 0;
-  animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  -moz-animation-duration: 2s;
-  -o-animation-duration: 2s;
-  -ms-animation-duration: 2s;
-  animation-delay: 0s;
-  -webkit-animation-delay: 0s;
-  -moz-animation-delay: 0s;
-  -o-animation-delay: 0s;
-  -ms-animation-delay: 0s;
 }
+
+
 .stream-card:hover {
   background-color: rgba(175, 192, 183, 0.8);
   border: 3px solid #fff;
   transition: border 0.4s ease-in-out;
-  -webkit-transition: border 0.4s ease-in-out;
-  -moz-transition: border 0.4s ease-in-out;
-  -o-transition: border 0.4s ease-in-out;
-  -ms-transition: border 0.4s ease-in-out;
-  transition: background-color 0.5s ease-in-out;
-  -webkit-transition: background-color 0.5s ease-in-out;
-  -moz-transition: background-color 0.5s ease-in-out;
-  -o-transition: background-color 0.5s ease-in-out;
-  -ms-transition: background-color 0.5s ease-in-out;
 }
+
+
 .stream-card img {
   max-height: 100%;
   max-width: 120px;
   margin: 0 0 0 -15px;
 }
+
+
 .stream-card .channel-desc {
   padding: 0 0 0 5px;
   max-width: 200px;
 }
+
+
 .stream-card .name-wrapper {
   width: 200px;
   margin: 0 0 0 0;
 }
+
+
 .stream-card .name-wrapper h2 {
   z-index: 1;
   font-size: 3.25em;
@@ -139,6 +118,8 @@ body a:focus {
   margin: 15px 0 0 40px;
   position: relative;
 }
+
+
 .stream-card .name-wrapper .fa-circle {
   z-index: -1;
   position: absolute;
@@ -146,17 +127,9 @@ body a:focus {
   left: 30px;
   font-size: 5em;
   color: rgba(172, 255, 211, 0.4);
-  animation-duration: 2.5s;
-  -webkit-animation-duration: 2.5s;
-  -moz-animation-duration: 2.5s;
-  -o-animation-duration: 2.5s;
-  -ms-animation-duration: 2.5s;
-  animation-delay: 0s;
-  -webkit-animation-delay: 0s;
-  -moz-animation-delay: 0s;
-  -o-animation-delay: 0s;
-  -ms-animation-delay: 0s;
 }
+
+
 .stream-card .name-wrapper .fa-circle-o {
   z-index: -1;
   position: absolute;
@@ -164,17 +137,9 @@ body a:focus {
   left: 30px;
   font-size: 5em;
   color: rgba(255, 108, 133, 0.4);
-  animation-duration: 2.5s;
-  -webkit-animation-duration: 2.5s;
-  -moz-animation-duration: 2.5s;
-  -o-animation-duration: 2.5s;
-  -ms-animation-duration: 2.5s;
-  animation-delay: 0s;
-  -webkit-animation-delay: 0s;
-  -moz-animation-delay: 0s;
-  -o-animation-delay: 0s;
-  -ms-animation-delay: 0s;
 }
+
+
 .stream-card .name-wrapper .fa-dot-circle-o {
   z-index: -1;
   position: absolute;
@@ -182,58 +147,25 @@ body a:focus {
   left: 30px;
   font-size: 5em;
   color: rgba(170, 170, 170, 0.6);
-  animation-duration: 2.5s;
-  -webkit-animation-duration: 2.5s;
-  -moz-animation-duration: 2.5s;
-  -o-animation-duration: 2.5s;
-  -ms-animation-duration: 2.5s;
-  animation-delay: 0s;
-  -webkit-animation-delay: 0s;
-  -moz-animation-delay: 0s;
-  -o-animation-delay: 0s;
-  -ms-animation-delay: 0s;
 }
+
+
 .stream-card .offline {
   color: transparent;
 }
+
+
 .stream-card .inactive {
   display: none;
 }
+
+
 .stream-card .streaming {
   text-align: left;
   margin: 8px 0 0 0;
 }
+
+
 .stream-card .viewers {
   margin: 8px 0 0 0;
-}
-
-footer {
-  margin: 35% 0 10% 0;
-  text-shadow: 2px 2px rgba(200, 200, 200, 0.7);
-}
-footer a {
-  color: rgba(170, 170, 170, 0.6);
-}
-footer a:hover {
-  color: rgba(175, 192, 183, 0.8);
-  text-decoration: none;
-  font-size: 1.6em;
-  transition: font-size 0.7s ease-in-out;
-  -webkit-transition: font-size 0.7s ease-in-out;
-  -moz-transition: font-size 0.7s ease-in-out;
-  -o-transition: font-size 0.7s ease-in-out;
-  -ms-transition: font-size 0.7s ease-in-out;
-}
-footer h5 {
-  font-size: 1.5em;
-}
-
-@media (max-width: 768px) {
-  body > .container {
-    overflow: hidden;
-  }
-
-  body > .container > * {
-    overflow: visible;
-  }
 }

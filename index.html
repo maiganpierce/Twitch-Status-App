@@ -1,24 +1,3 @@
-<!-- <!DOCTYPE html>
-<html ng-app="angularApp">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="Scripts/angular.min.js"></script>
-</head>
-<body ng-controller="Main as vm">
-    <input type="text" ng-model="vm.food" />
-    <input type="text" ng-model="vm.side" />
-
-    <p>Food Type: {{vm.food}}</p>
-    <p>Side: {{vm.side}}</p>
-
-    <script src="Scripts/angular.min.js"></script>
-    <script src="app/app.module.js"></script>
-    <script src="app/main.js"></script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,13 +22,13 @@
 
 
 	<!-- TITLE -->
-	<div class="title animated slideInDown">
-		<h1><i class="fa fa-twitch animated pulse infinite" aria-hidden="true"></i>  twitch.tv status app</h1>
+	<div class="title animated bounceIn">
+		<h1><i class="fa fa-twitch animated pulse infinite" aria-hidden="true"></i>  twitch.tv status</h1>
 	</div>
 
 
 	<!-- NAVIGATION -->
-	<div class="container navigation animated slideInDown">
+	<div class="container navigation animated bounceIn">
 		
 
 		<!-- MAIN NAVIGATION -->			
@@ -65,16 +44,16 @@
 
 		<!-- SUB NAVIGATION -->
 		<div class="row sub-nav">
-			<div class="fav-status animated bounceInUp hidden" ng-init="selected = 'all'">
+			<div class="fav-status animated bounceIn hidden" ng-init="selected = 'all'">
 
 				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="all">
 					<div class='active nav-button all-btn' ng-click="status = {}">all</div>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="online">
-					<div class='nav-button online-btn' ng-click="status = {status: 'online'}" ng-class=""><i class="fa fa-circle animated zoomInDown"></i>online</div>
+					<div class='nav-button online-btn' ng-click="status = {status: 'online'}" ng-class=""><i class="fa fa-circle animated bounceIn"></i>online</div>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 sub-nav" id="offline">
-					<div class='nav-button offline-btn' ng-click="status = {status: 'offline'}"><i class="fa fa-circle-o animated zoomInDown"></i>offline</div>
+					<div class='nav-button offline-btn' ng-click="status = {status: 'offline'}"><i class="fa fa-circle-o animated bounceIn"></i>offline</div>
 
 				</div>
 			</div>
@@ -87,10 +66,9 @@
 	<div class="container" ng-controller="favController">
 		<div ng-repeat="attr in favorites | orderBy: 'name' | filter: status">
 			<a href="{{ attr.url }}" target="_blank">
-				<div class="row stream-card fav-card animated slideInUp hidden">
+				<div class="row stream-card fav-card animated bounceIn hidden">
 					<div class="col-sm-2 col-md-2">
-						<!-- <img class="animated zoomIn" src="{{ attr.logo || 'http://dummyimage.com/140x140/eeeeee/999999.png&text=no+logo' }}"> -->
-						<img class="animated zoomIn" src="{{ attr.logo }}">
+						<img class="animated bounceIn" src="{{ attr.logo }}">
 					</div>
 					<div class="col-sm-10 col-md-10">
 						<div class="row">
@@ -101,7 +79,7 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-9">
 								<div class="name-wrapper">
-									<i ng-class="{'fa fa-circle animated zoomInLeft':attr.online,'fa fa-circle-o animated zoomInLeft':attr.offline,'fa fa-dot-circle-o animated zoomInDown':attr.inactive}"></i>
+									<i ng-class="{'fa fa-circle animated bounceIn':attr.online,'fa fa-circle-o animated bounceIn':attr.offline,'fa fa-dot-circle-o animated bounceIn':attr.inactive}"></i>
 									<h2>{{ attr.display_name }}</h2>
 								</div>
 							</div>
@@ -126,9 +104,8 @@
 	<div class="container" ng-controller="popController" ng-cloak>
 		<div ng-repeat="attr in data">
 			<a href="{{ attr.channel.url }}" target="_blank">
-				<div class="row stream-card pop-card animated slideInUp">
+				<div class="row stream-card pop-card animated bounceIn">
 					<div class="col-sm-2 col-md-2">
-						<!-- <img class="animated zoomIn" src="{{ attr.channel.logo || 'http://dummyimage.com/140x140/eeeeee/999999.png&text=no+logo' }}"> -->
 						<img class="animated zoomIn" src="{{ attr.channel.logo }}">
 					</div>
 					<div class="col-sm-10 col-md-10">
@@ -140,7 +117,7 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-9">
 								<div class="name-wrapper">
-									<i class="fa fa-circle animated zoomInLeft"></i>
+									<i class="fa fa-circle animated bounceIn"></i>
 									<h2>{{ attr.channel.display_name }}</h2>
 								</div>
 							</div>
@@ -161,17 +138,7 @@
 		</div>
 	</div>
 
-<!-- 	<script src="Scripts/angular.min.js"></script>
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-	<script src="app/main.js"></script> -->
-
 </body>
-
-<footer>
-	<h5>Designed and coded by Maigan Pierce</a><br><br>All rights reserved &#9426 2018</h5>
-</footer>
 </html>
 
 
